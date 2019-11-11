@@ -1,0 +1,17 @@
+<template name="renderView">
+    <block>
+        <view>1</view>
+    </block>
+</template>
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <block>
+            <block wx:if="{{isShow == ['1']}}">
+                <view>1</view>
+            </block>
+            <block wx:else>
+                <view>12</view>
+            </block>
+        </block>
+    </view>
+</block>

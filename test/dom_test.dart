@@ -1,6 +1,8 @@
 /// Additional feature tests that aren't based on test data.
 library dom_test;
 
+import 'dart:io';
+
 import 'package:test/test.dart';
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
@@ -17,11 +19,10 @@ main() {
     });
   });
 
-  group('Document', () {
-    final doc = parse('<div id=foo>'
-        '<div class=" bar baz"></div>'
-        '<div class="qux  baz "></div>'
-        '<div id=Foo>');
+  group('Document', () async {
+    final file = await new File('../test.wxml');
+    final fileStr = await file.readAsStringSync();
+    final doc = parse(fileStr);
 
     test('getElementById', () {
       var foo = doc.body.nodes[0];
